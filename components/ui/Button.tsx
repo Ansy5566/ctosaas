@@ -5,18 +5,21 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
+  loading?: boolean;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ 
     className, 
     variant = 'primary', 
     size = 'md', 
     isLoading = false,
+    loading = false,
     disabled,
     children,
     ...props 
   }, ref) => {
+    const isLoadingState = isLoading || loading;
     const baseStyles = 'inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
     
     const variants = {
@@ -42,10 +45,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           sizes[size],
           className
         )}
-        disabled={disabled || isLoading}
+        disabled={disabled || isLoadingState}
         {...props}
       >
-        {isLoading && (
+        {isLoadingState && (
           <svg 
             className="animate-spin -ml-1 mr-2 h-4 w-4" 
             xmlns="http://www.w3.org/2000/svg" 
