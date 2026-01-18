@@ -10,7 +10,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       success: true,
       data: user,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json<ApiResponse<null>>(
       {
         success: false,

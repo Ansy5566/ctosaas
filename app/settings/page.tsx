@@ -23,8 +23,11 @@ export default function SettingsPage() {
 
   useEffect(() => {
     if (user) {
-      setName(user.name);
-      setAvatar(user.avatar || '');
+      const updateState = () => {
+        setName(user.name);
+        setAvatar(user.avatar || '');
+      };
+      updateState();
     }
   }, [user]);
 

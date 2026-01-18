@@ -27,7 +27,10 @@ export default function ExportPage() {
   }, []);
 
   useEffect(() => {
-    load();
+    const fetchData = () => {
+      load();
+    };
+    fetchData();
   }, [load]);
 
   const onCreate = async () => {

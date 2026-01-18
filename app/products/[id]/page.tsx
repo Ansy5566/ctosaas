@@ -27,7 +27,10 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
   }, [params.id]);
 
   useEffect(() => {
-    load(false);
+    const fetchData = () => {
+      load(false);
+    };
+    fetchData();
   }, [load]);
 
   const onSave = async () => {

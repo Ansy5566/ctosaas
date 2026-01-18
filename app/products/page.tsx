@@ -52,7 +52,10 @@ export default function ProductsPage() {
   );
 
   useEffect(() => {
-    load(false);
+    const fetchData = () => {
+      load(false);
+    };
+    fetchData();
   }, [load]);
 
   const onSearch = (e: React.FormEvent) => {

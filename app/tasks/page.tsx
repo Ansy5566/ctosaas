@@ -39,15 +39,21 @@ export default function TasksPage() {
   }, []);
 
   useEffect(() => {
-    load(false);
+    const fetchData = () => {
+      load(false);
+    };
+    fetchData();
   }, [load]);
 
   const supportedTypes = useMemo(() => PLATFORM_CONFIG[platform].supportedTypes, [platform]);
 
   useEffect(() => {
-    if (!supportedTypes.includes(type)) {
-      setType(supportedTypes[0] as CollectionType);
-    }
+    const updateType = () => {
+      if (!supportedTypes.includes(type)) {
+        setType(supportedTypes[0] as CollectionType);
+      }
+    };
+    updateType();
   }, [supportedTypes, type]);
 
   const onCreate = async (e: React.FormEvent) => {
